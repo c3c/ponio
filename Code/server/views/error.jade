@@ -1,0 +1,19 @@
+!!!
+html
+  head
+    title Ponio control panel
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+    script(src='/js/jquery-1.8.3.min.js')
+    script(src='/js/bootstrap.min.js')
+    block scripts
+  body
+    .container
+        .row.well
+            h2 Error
+            p Something went wrong, try again :)
+            if (locals.error != null)
+                p Error: #{error}
+        .row   
+            hr     
+            include layout/includes/footer    

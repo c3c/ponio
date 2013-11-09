@@ -1,0 +1,23 @@
+!!!
+html
+  head
+    title Ponio control panel
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+    script(src='/js/jquery-1.8.3.min.js')
+    script(src='/js/bootstrap.min.js')
+    script(src='/js/script.js')
+    block scripts
+  body
+    .container
+        .row
+            .span3
+                include includes/sidebar
+            .span8
+                .row-fluid
+                    block message
+                .row
+                    block content
+        .row   
+            hr     
+            include includes/footer

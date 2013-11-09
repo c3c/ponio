@@ -1,0 +1,11 @@
+extend module
+
+block append content
+    - var items = [];
+    - items.push({ type:'list', name:'Websites', options: config.Websites });
+    - items.push({ type:'text', name:'AddWebsite_Name', label:'Name' });
+    - items.push({ type:'text', name: 'AddWebsite_ServerAdmin', label:'ServerAdmin' });
+    - items.push({ type:'button', name:'AddWebsite', value:'Add website', options:'blue' });
+    - items.push({ type:'dropdown', name:'DisableWebsite_Name', label: 'Name', options: config.Websites });
+    - items.push({ type:'button', name:'DisableWebsite', value:'Disable Website', options:'blue' });
+    mixin moduleDetails(items,config.Status)    

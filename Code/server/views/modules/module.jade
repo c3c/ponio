@@ -1,0 +1,113 @@
+extends ../layout/layout
+
+block message
+    if (locals.msg != null && locals.code != null)
+        .alert.alert-info
+            a.close x
+            p 
+                |#{module} #{msg}
+                if(code)
+                    | was
+                    span.badge.badge-success successful
+                else
+                    span.badge.badge-important failed
+    else if (locals.msg != null)
+        .alert.alert-info
+            a.close x
+            p #{msg}
+
+block content
+    //-
+        @param string type ['radio','button','text']
+        @param string name name
+        @param string value value
+        @param object options depend from type
+        -                       * radio: array options, by default ['on','off']
+        -                       * button: string type ['red','green','blue','normal'], by default 'normal'
+        -                       * list: array listitems  
+    mixin formItem(type,name,value,label,options)
+        .control-group
+            if (type != 'button' && label == true)
+                label.control-label #{name}
+            else if (label != null && label != false)
+                label.control-label #{label}
+            .controls   
+                case type 
+                    when 'list'
+                        if(options)
+                            ul
+                                each option in options
+                                    li #{option}                                       
+                    when 'dropdown'
+                        select(name='#{name}')
+                            if (options)
+                                each option in options
+                                    option(value='#{option}',selected=value.toString() == option.toString()) #{option} 
+                            else
+                                option(value='on',selected=value.toString() == 'on') on
+                                option(value='off',selected=value.toString() == 'off') off
+                    when 'button'
+                        if (options)
+                            case options
+                                when 'red'
+                                    button(type='submit',name='#{name}').btn.btn-primary.badge-important #{value}
+                                when 'green'
+                                    button(type='submit',name='#{name}').btn.btn-primary.badge-success #{value}
+                                when 'blue'
+                                    button(type='submit',name='#{name}').btn.btn-primary #{value}
+                                default 
+                                    button(type='submit',name='#{name}').btn #{value}
+                        else
+                            button(type='submit',name='#{name}').btn #{value}  
+                    when 'checkbox'
+                        label.checkbox
+                            if (value != null && value)
+                                input(name='#{name}',type='checkbox',checked)
+                            else
+                                input(name='#{name}',type='checkbox')   
+                    when 'password'
+                        input(name='#{name}',type='password',value='#{value.toString()}')                                       
+                    default
+                        input(name='#{name}',type='text',value='#{value.toString()}')
+
+    //-
+        @param object options object with the formoptions (title,action,method,items)
+        -
+        -
+        -- Example --
+        -
+        - var options =   {
+        -                   moduleName: 'Form title',
+        -                   items:  [
+        -                               {
+        -                                   type:   'text',
+        -                                   name:   'username',
+        -                                   value:  'herp',                                   
+        -                               },
+        -                               {
+        -                                   type:   'button',
+        -                                   name:   'addUser',
+        -                                   value:  'Add user'
+        -                               }
+        -                           ]
+        -               }; 
+    mixin moduleDetails(items,status)
+        form(action='/modules/#{module}/action',method='post').form-horizontal.well.span12
+            fieldset
+                legend #{module}
+                if (status)
+                    if (status == 'started')
+                        mixin formItem('button','Restart','Restart',false,'green')
+                        mixin formItem('button','Stop','Stop',false,'red')
+                    else
+                        mixin formItem('button','Start','Start',false,'green') 
+                    if (status == 'started')               
+                        each item in items
+                            if(item.label == null && item.type != 'button')
+                                - item.label = true;
+                            if(item.value == null)
+                                - item.value = "";
+                            if (item.options)
+                                mixin formItem(item.type,item.name,item.value,item.label,item.options)
+                            else
+                                mixin formItem(item.type,item.name,item.value,item.label)

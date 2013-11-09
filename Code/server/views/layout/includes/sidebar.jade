@@ -1,0 +1,13 @@
+.well
+    ul.nav.nav-list
+        li.nav-header Dashboard
+        li
+            a(href="/overview") overview 
+        li.nav-header Modules
+        each settings, modulename in modules        
+            if (locals.module && module == modulename)
+                li.active 
+                    a(href='/modules/' + modulename) #{modulename}
+            else
+                li
+                    a(href='/modules/' + modulename) #{modulename}    

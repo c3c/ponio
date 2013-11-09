@@ -1,0 +1,22 @@
+extend module
+
+block append content
+    - var items = [];
+    - items.push({ type:'list', name:'Rules', options: config.RuleDescriptions });
+    - items.push({ type:'dropdown', name:'AddRule_Type', options: ['INPUT','OUTPUT','FORWARD'], label: 'Type' });
+    - items.push({ type:'dropdown', name:'AddRule_Action', options: ['ACCEPT','REJECT'], label: 'Action' });
+    - items.push({ type:'text', name:'AddRule_Interface', label: 'Interface' });
+    - items.push({ type:'text', name:'AddRule_Destination', label: 'Destination' });
+    - items.push({ type:'dropdown', name:'AddRule_Protocol', options: ['TCP','UDP','ICMP'], label: 'Protocol' });
+    - items.push({ type:'text', name:'AddRule_Port', label: 'Port' });
+    - items.push({ type:'button', name:'AddRule', value:'Add rule',options:'blue' });
+    - items.push({ type:'dropdown', name:'DelRule_RuleId', label: 'Rule', options: config.RuleIds });
+    - items.push({ type:'button', name:'DelRule', value:'Delete rule',options:'blue' });
+    - items.push({ type:'dropdown', name:'MoveRule_RuleId', label: 'Rule', options: config.RuleIds });
+    - items.push({ type:'dropdown', name:'MoveRule_RulePlaceId', label: 'Move to rule', options: config.RuleIds });
+    - items.push({ type:'checkbox', name:'MoveRule_Before', label: 'Before' });
+    - items.push({ type:'button', name:'MoveRule', value:'Move rule',options:'blue' });
+    - items.push({ type:'checkbox', name:'Established', label: 'Allow established', value: config.established });
+    - items.push({ type:'button', name:'Save', value:'Save changes',options:'blue' });
+    - items.push({ type:'button', name:'Undo', value:'Undo changes' });
+    mixin moduleDetails(items,config.Status)    

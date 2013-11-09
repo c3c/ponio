@@ -1,0 +1,15 @@
+extends layout/layout
+
+block content
+    mixin modulesummary(modulename ,settings)
+        .span4
+                .well.clearfix
+                    h2 #{modulename} 
+                    dl.clearfix
+                        each val, key in settings
+                            .row-fluid
+                                dt.span6 #{key}: 
+                                dd.span6 #{val}
+                    a(href='/modules/' + modulename) Details
+    each settings, modulename in modules
+        mixin modulesummary(modulename,settings)   

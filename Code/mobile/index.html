@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ponio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="master.css">
+    <script type="text/javascript" charset="utf-8" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+    <script type="text/javascript" src="https://ponio.us:5051/socket.io/socket.io.js"></script>
+    <script type="text/javascript" charset="utf-8" src="main.js"></script>
+  </head>
+  <body onload="init()">
+    <div class="container-fluid">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <a class="brand" href="#" onclick="getStatus()">Ponio</a>
+          <a class="brand" href="#" onclick="getStatus()" style="float:right; font-size: 1.02em;">Tap to refresh</a>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="well">
+          <h4 style="margin:0 0 4px; float:left">FTP</h4> <span class="label" style="float:right" id="ftp_status"></span>
+        </div>
+        <div class="well">
+          <h4 style="margin:0 0 4px; float:left">Apache</h4> <span class="label" style="float:right" id="apache_status"></span>
+        </div>
+        <div class="well">
+          <h4 style="margin:0 0 4px; float:left">MySQL</h4> <span class="label" style="float:right" id="mysql_status"></span>
+        </div>
+        <div class="well">
+          <h4 style="margin:0 0 4px; float:left">Firewall</h4> <span class="label" style="float:right" id="firewall_status"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

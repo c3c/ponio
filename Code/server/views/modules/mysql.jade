@@ -1,0 +1,21 @@
+extend module
+
+block append content
+    - var items = [];
+    - items.push({ type:'list', name:'Databases', options: config.DatabaseDescriptions });
+    - items.push({ type:'list', name:'Users', options: config.Users });
+    - items.push({ type:'text', name:'AddUser_Username', label: 'Username' });
+    - items.push({ type:'password', name:'AddUser_Password', label: 'Password' });
+    - items.push({ type:'text', name:'AddUser_Database', label: 'Database' });
+    - items.push({ type:'button', name:'AddUser', value:'Add user',options:'blue' });
+    - items.push({ type:'text', name:'AddDatabase_Database', label: 'Database' });
+    - items.push({ type:'button', name:'AddDatabase', value:'Add database',options:'blue' });
+    - items.push({ type:'dropdown', name:'DelUser_Username', label: 'Username', options: config.Users });
+    - items.push({ type:'button', name:'DelUser', value:'Delete user',options:'blue' });
+    - items.push({ type:'dropdown', name:'DelDatabase_Database', label: 'Database', options: config.DatabaseNames });
+    - items.push({ type:'button', name:'DelDatabase', value:'Delete database',options:'blue' });
+    - items.push({ type:'dropdown', name:'Link_Username', label: 'Username', options: config.Users });
+    - items.push({ type:'dropdown', name:'Link_Database', label: 'Database', options: config.DatabaseNames });
+    - items.push({ type:'button', name:'Link', value:'Link',options:'blue' });
+    - items.push({ type:'button', name:'Unlink', value:'Unlink',options:'blue' });
+    mixin moduleDetails(items,config.Status)    

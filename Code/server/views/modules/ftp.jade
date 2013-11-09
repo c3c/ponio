@@ -1,0 +1,12 @@
+extend module
+
+block append content
+    - var items = [];
+    - items.push({ type:'text', name:'ServerName', value:config.ServerName });
+    - items.push({ type:'text', name:'WelcomeMessage', value:config.WelcomeMessage });
+    - items.push({ type:'dropdown', name:'ListOptions', value:config.ListOptions, options: ['-l','-la'] });
+    - items.push({ type:'dropdown', name:'ShowSymlinks', value:config.ShowSymlinks });
+    - items.push({ type:'text', name:'DefaultRoot', value:config.DefaultRoot });
+    - items.push({ type:'text', name:'Umask', value:config.Umask });
+    - items.push({ type:'button', name:'Save', value:'Save changes',options:'blue' });
+    mixin moduleDetails(items,config.Status)    

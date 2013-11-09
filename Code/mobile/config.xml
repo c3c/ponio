@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "be.ikdoeict.poniocli"
+        versionCode="10" 
+        version   = "1.0.0">
+
+    <name>Ponio FTP</name>
+	
+    <description>
+        Ponio FTP status
+    </description>
+
+    <author href="http://www.ce3c.be" email="cedric@ce3c.be">
+        Cedric Van Bockhaven
+    </author>
+
+	<icon src="icon.png" />
+</widget>

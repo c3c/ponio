@@ -1,0 +1,28 @@
+!!!
+html
+  head
+    title Ponio control panel
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+    script(src='/js/jquery-1.8.3.min.js')
+    script(src='/js/bootstrap.min.js')
+    block scripts
+  body
+    .container
+        .row.offset2
+            form(action='/login/action',method='post').form-horizontal.well.span6
+                fieldset
+                    legend Login
+                        .control-group
+                            label.control-label username
+                            .controls
+                                input(name='username',type='text') 
+                        .control-group
+                            label.control-label password
+                            .controls
+                                input(name='password',type='password') 
+                        .form-actions
+                            button(type='submit',name='login').btn Login   
+        .row   
+            hr     
+            include layout/includes/footer 

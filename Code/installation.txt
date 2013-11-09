@@ -1,0 +1,58 @@
+========================
+INSTALLATION GUIDE PONIO
+========================
+
+Ponio is a server-agent application to manage linux servers from a node server which offers the webinterface. 
+
+Following actions should be executed to install the server and the agent.
+
+
+Server
+------
+
+In the node folder you find the config.js file. This is the only file you have to edit. The username and password are the one who are used for authentication on the webservice. The authenticationhash is a shared key between server and agent. And in the agent you can fill in the link to the agent.
+
+config.username = 'username';
+config.password = 'password';
+config.authenticationhash = 'sharedkey';
+config.agent = 'https://agentlink.com:5051/';
+
+The contents of the node folder should be published.
+
+
+Agent
+-----
+
+Dependencies
+============
+
+Make sure following services are installed on your server
+  * ProFTPD
+  * Mysql
+  * Apache
+  * (IPTables)
+
+Install CPan and following libraries (following commands):
+
+sudo apt-get install cpan
+sudo cpan
+install DBI
+install Tie::File
+install Twiggy::Server::TLS
+install Plack::Builder
+
+In the ponio.cfg you can edit your agent settings. 
+
+"hostname" => "0.0.0.0",
+"port" => 5051,
+"ssl_key" => "keypathorempty",
+"ssl_cert" => "certificatepathorempty",
+"auth_hash" => "sharedkey",
+"allowed" => undef
+
+Run
+===
+
+To run the agent, just enter the following command:
+
+sudo ./ponio.psgi
